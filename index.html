@@ -7,7 +7,7 @@
   <meta name="description" content="17RETURNS Black Friday offer, November 3–30. New customers save up to 30% on yearly plans, plus 20% extra quota. Bundle Returns and Tracking for another 5% off.">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="returns.css?v=7">
+  <link rel="stylesheet" href="returns.css?v=28">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23003a9b'/%3E%3C/svg%3E">
 </head>
 <body>
@@ -28,7 +28,7 @@
           <nav id="site-nav" class="nav-links" data-nav aria-label="Primary">
             <div class="nav-group">
               <a class="nav-item" href="https://www.17track.com/en/products/tracking" target="_blank" rel="noopener">Tracking</a>
-              <a class="nav-item active" href="https://www.17track.com/en/products/returns" target="_blank" rel="noopener" aria-label="17RETURNS, Black Friday offer">17RETURNS<span class="promo-dot" aria-hidden="true"></span></a>
+              <a class="nav-item" href="https://www.17track.com/en/products/returns" target="_blank" rel="noopener" aria-label="17RETURNS">17RETURNS</a>
               <a class="nav-item" href="https://www.17track.net/en/api?utm_source=www.17track.com&amp;utm_medium=menus&amp;utm_campaign=header" target="_blank" rel="noopener">API</a>
             </div>
             <div class="nav-divider" aria-hidden="true"></div>
@@ -96,6 +96,35 @@
                 </div>
               </div>
               <a class="nav-item" href="#plans">Pricing</a>
+              <div class="nav-item-wrap">
+                <button class="nav-item bfcm-nav" type="button" aria-expanded="false" aria-controls="menu-bfcm" data-menu-button>
+                  <svg class="bfcm-gift" viewBox="0 0 1024 1024" aria-hidden="true"><path fill="currentColor" d="M841.477 282.818H696.769a132.595 132.595 0 0 0 6.514-4.752c31.391-24.461 55.673-54.961 68.373-85.882 14.947-36.394 12.548-71.349-6.585-95.901-19.132-24.552-52.439-35.421-91.383-29.824-33.087 4.757-68.597 20.848-99.988 45.308-22.488 17.523-40.221 43.148-52.108 75.009-11.887-31.861-29.62-57.486-52.108-75.009-31.392-24.46-66.901-40.551-99.988-45.308-38.945-5.601-72.251 5.271-91.384 29.824-19.132 24.552-21.532 59.507-6.584 95.901 12.7 30.921 36.981 61.421 68.373 85.882a133.075 133.075 0 0 0 6.514 4.752H182.523c-29.751 0-54.093 24.343-54.093 54.093v167.197h338.083v-180.72h94.663v180.721H895.57V336.911c0-29.75-24.342-54.093-54.093-54.093zM613.038 162.25c22.416-17.467 47.842-29.292 69.758-32.443 15.118-2.177 27.304 0.052 31.793 5.813 4.488 5.76 3.67 18.117-2.134 32.249-8.412 20.481-26.094 42.246-48.51 59.713-25.255 19.681-64.219 21.664-92.171 19.325 4.567-27.697 16.016-64.983 41.264-84.657z m-282.309 5.619c-5.804-14.132-6.622-26.489-2.134-32.249 4.487-5.76 16.669-7.99 31.792-5.813 21.917 3.151 47.342 14.976 69.758 32.443 25.257 19.681 36.704 56.983 41.267 84.652-27.973 2.343-66.926 0.354-92.175-19.32-22.416-17.467-40.096-39.231-48.508-59.713zM561.176 958.983h243.419c29.751 0 54.093-24.343 54.093-54.093V560.66H561.176v398.323zM160.394 904.89c0 29.751 24.341 54.093 54.093 54.093h252.025V560.66H160.394v344.23z"/></svg>
+                  <span class="bfcm-label">BFCM 2026</span>
+                  <span class="bfcm-burst" aria-hidden="true"></span>
+                </button>
+                <div id="menu-bfcm" class="nav-menu bfcm-menu" hidden>
+                  <ul>
+                    <li>
+                      <a class="bfcm-card" href="https://www.17track.com/en/products/tracking" target="_blank" rel="noopener">
+                        <span class="bfcm-card-copy">
+                          <span class="nav-menu-title">Shopify Tracking</span>
+                          <span class="nav-menu-desc">Track every order across 3,500+ carriers, right inside Shopify.</span>
+                        </span>
+                        <img src="assets/hero-sneakers.jpg" alt="" width="96" height="64">
+                      </a>
+                    </li>
+                    <li>
+                      <a class="bfcm-card" href="https://www.17track.com/en/products/returns" target="_blank" rel="noopener">
+                        <span class="bfcm-card-copy">
+                          <span class="nav-menu-title">17RETURNS</span>
+                          <span class="nav-menu-desc">Run returns and exchanges, and keep the revenue in the sale.</span>
+                        </span>
+                        <img src="assets/hero-returns.jpg" alt="" width="96" height="64">
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </nav>
         </div>
@@ -127,7 +156,10 @@
           <h1 id="hero-title">Make every return<br>a chance to grow.</h1>
           <p class="lead">AI runs returns and exchanges around the clock. Recover the order before the refund, and keep the revenue through exchanges, store credit, and small make-goods.</p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#plans">Start free</a>
+            <a class="btn-switch" href="#plans">
+              <span class="btn-switch-knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.4" fill="currentColor" opacity="0.35"/><circle cx="8.2" cy="12" r="1.5" fill="currentColor" opacity="0.55"/><circle cx="11.5" cy="12" r="1.6" fill="currentColor" opacity="0.8"/><path d="M13 7.5L18.5 12 13 16.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="btn-switch-label">Start free</span>
+            </a>
             <a class="btn btn-ghost" href="https://www.17track.com/en/contact-us" target="_blank" rel="noopener">Book a demo</a>
           </div>
         </div>
@@ -230,7 +262,7 @@
     <section class="section" id="report" aria-labelledby="report-title">
       <div class="canvas">
         <header class="section-head">
-          <h2 id="report-title">2026 Black Friday returns readiness report</h2>
+          <h2 id="report-title">2026 <span class="bf-mark">Black Friday<img class="bf-sparkle" src="assets/sparkle.svg" alt="" width="38" height="38"></span><br>returns readiness report</h2>
           <p class="lead">From data, sales, customer success, and marketing. One report for the homepage, this page, email, the blog, and social.</p>
         </header>
         <ul class="figures">
@@ -251,7 +283,10 @@
           </li>
         </ul>
         <div class="cta-row">
-          <a class="btn btn-primary" href="#report-note">Download the full report</a>
+          <a class="btn-switch" href="#report-note">
+            <span class="btn-switch-knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.4" fill="currentColor" opacity="0.35"/><circle cx="8.2" cy="12" r="1.5" fill="currentColor" opacity="0.55"/><circle cx="11.5" cy="12" r="1.6" fill="currentColor" opacity="0.8"/><path d="M13 7.5L18.5 12 13 16.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="btn-switch-label">Download the full report</span>
+          </a>
         </div>
         <p class="note" id="report-note" tabindex="-1">The PDF publishes with the campaign. The three figures on this page are illustrative. The data team’s report is the final source.</p>
       </div>
@@ -271,7 +306,66 @@
           </div>
         </div>
         <p class="note" id="product-tagline"></p>
+        <div class="plan-tabs" id="plan-tabs" role="tablist" aria-label="Plans"></div>
         <div class="price-cards" id="plan-grid" aria-live="polite"></div>
+
+        <section class="compare" aria-labelledby="compare-title">
+          <header class="section-head">
+            <h2 id="compare-title">Compare features</h2>
+            <p class="lead">Split by module, so you can see what Free, Basic, Pro, and Max include. Enterprise is custom.</p>
+          </header>
+          <div class="compare-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Feature</th>
+                  <th scope="col">Free</th>
+                  <th scope="col">Basic</th>
+                  <th scope="col">Pro</th>
+                  <th scope="col">Max</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="compare-group"><th colspan="5" scope="colgroup">Return portal</th></tr>
+                <tr><th scope="row">Self-serve return request</th><td></td><td></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Return progress page</th><td></td><td></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Embedded return center</th><td class="yes"></td><td class="yes"></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Refund request</th><td class="yes"></td><td class="yes"></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Variant exchange</th><td></td><td></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Green return</th><td class="yes"></td><td class="yes"></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Cancel unfulfilled orders</th><td class="yes"></td><td class="yes"></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr class="compare-group"><th colspan="5" scope="colgroup">Rules and automation</th></tr>
+                <tr><th scope="row">AI rule builder</th><td class="yes"></td><td class="yes"></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Basic workflows</th><td class="yes"></td><td class="yes"></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Advanced workflows</th><td></td><td></td><td></td><td class="yes"></td></tr>
+                <tr><th scope="row">Smart return queue</th><td class="yes"></td><td class="yes"></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">AI policy Q&amp;A</th><td class="yes"></td><td class="yes"></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr class="compare-group"><th colspan="5" scope="colgroup">Revenue retention</th></tr>
+                <tr><th scope="row">Store credit refund</th><td></td><td></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Return handling fee</th><td></td><td></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Automatic price-difference settlement</th><td></td><td></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Small compensation to keep the sale</th><td></td><td></td><td></td><td class="yes"></td></tr>
+                <tr><th scope="row">Store credit retention offer</th><td></td><td></td><td></td><td class="yes"></td></tr>
+                <tr><th scope="row">Guide an exchange instead of a refund</th><td></td><td></td><td></td><td class="yes"></td></tr>
+                <tr><th scope="row">Retention dashboard</th><td></td><td></td><td></td><td class="yes"></td></tr>
+                <tr class="compare-group"><th colspan="5" scope="colgroup">Shipping and labels</th></tr>
+                <tr><th scope="row">Live rate comparison</th><td></td><td></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Aggregated carriers</th><td></td><td></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Your own carrier account</th><td></td><td></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Automatic label creation</th><td></td><td></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">QR code labels</th><td></td><td></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr class="compare-group"><th colspan="5" scope="colgroup">Notifications, platform, and enterprise</th></tr>
+                <tr><th scope="row">Branded email notifications</th><td class="yes"></td><td class="yes"></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Native Shopify integration</th><td class="yes"></td><td class="yes"></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Multi-store management</th><td class="yes"></td><td class="yes"></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">AI multilingual localization</th><td class="yes"></td><td class="yes"></td><td class="yes"></td><td class="yes"></td></tr>
+                <tr><th scope="row">Open API</th><td></td><td></td><td></td><td class="yes"></td></tr>
+                <tr><th scope="row">Custom volume, SLA, and integrations</th><td></td><td></td><td></td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">Custom volume, a dedicated success manager, SLA, custom integrations, data migration, and multi-brand deployment are enterprise only. <a href="https://www.17track.com/en/contact-us" target="_blank" rel="noopener">Contact us</a>.</p>
+        </section>
 
         <section class="bundle-offer" id="bundle" aria-labelledby="bundle-title">
           <div class="bundle-copy">
@@ -280,7 +374,10 @@
             <p class="bill-bf bundle-flag">Only if neither product has an active paid subscription</p>
             <p class="note">Customer service sets the price. Individual cases, including current customers, can go lower within approval. Nothing renews automatically.</p>
           </div>
-          <a class="btn btn-primary" href="https://www.17track.com/en/contact-us" target="_blank" rel="noopener">Talk to us about the bundle</a>
+          <a class="btn-switch" href="https://www.17track.com/en/contact-us" target="_blank" rel="noopener">
+            <span class="btn-switch-knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.4" fill="currentColor" opacity="0.35"/><circle cx="8.2" cy="12" r="1.5" fill="currentColor" opacity="0.55"/><circle cx="11.5" cy="12" r="1.6" fill="currentColor" opacity="0.8"/><path d="M13 7.5L18.5 12 13 16.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="btn-switch-label">Talk to us about the bundle</span>
+          </a>
         </section>
       </div>
     </section>
@@ -292,15 +389,35 @@
           <p class="lead">Black Friday pricing runs November 3–30 only. New-customer rates, once per account.</p>
         </header>
         <div class="cta-row">
-          <a class="btn btn-primary" href="#plans">Claim the Black Friday price</a>
+          <a class="btn-switch" href="#plans">
+            <span class="btn-switch-knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.4" fill="currentColor" opacity="0.35"/><circle cx="8.2" cy="12" r="1.5" fill="currentColor" opacity="0.55"/><circle cx="11.5" cy="12" r="1.6" fill="currentColor" opacity="0.8"/><path d="M13 7.5L18.5 12 13 16.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="btn-switch-label">Claim the Black Friday price</span>
+          </a>
           <a class="btn btn-ghost" href="#report">Download the report</a>
         </div>
-        <p class="note">Code
-          <button class="code-copy code-chip" type="button" data-copy data-copy-inline data-copy-code="BFCM25" aria-label="Copy code BFCM25">
-            <span>BFCM25</span>
-            <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="6" y="6" width="8" height="8" rx="1.25" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10 6.2V3.4c0-.8-.6-1.4-1.4-1.4H3.4C2.6 2 2 2.6 2 3.4v5.2c0 .8.6 1.4 1.4 1.4H6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-          </button>
-        </p>
+        <div class="coupon">
+          <div class="coupon-art" aria-hidden="true">
+            <svg viewBox="0 0 440 150" preserveAspectRatio="xMidYMid slice">
+              <rect width="440" height="150" fill="#123f86"/>
+              <path d="M-20 170C40 70 90 18 168 78c38 30 62 72 92 72H-20Z" fill="#0e8f86"/>
+              <path d="M18 18c28 46 22 92-8 132" fill="none" stroke="#16324f" stroke-width="18" stroke-linecap="round"/>
+              <path d="M48 8c18 40 14 86-10 128" fill="none" stroke="#16324f" stroke-width="10" stroke-linecap="round"/>
+              <path d="M250 0h210L300 150h-20C300 90 286 36 250 0Z" fill="#f0c84a"/>
+              <g transform="translate(184 36) scale(0.076)" fill="#fff">
+                <path d="M841.477 282.818H696.769a132.595 132.595 0 0 0 6.514-4.752c31.391-24.461 55.673-54.961 68.373-85.882 14.947-36.394 12.548-71.349-6.585-95.901-19.132-24.552-52.439-35.421-91.383-29.824-33.087 4.757-68.597 20.848-99.988 45.308-22.488 17.523-40.221 43.148-52.108 75.009-11.887-31.861-29.62-57.486-52.108-75.009-31.392-24.46-66.901-40.551-99.988-45.308-38.945-5.601-72.251 5.271-91.384 29.824-19.132 24.552-21.532 59.507-6.584 95.901 12.7 30.921 36.981 61.421 68.373 85.882a133.075 133.075 0 0 0 6.514 4.752H182.523c-29.751 0-54.093 24.343-54.093 54.093v167.197h338.083v-180.72h94.663v180.721H895.57V336.911c0-29.75-24.342-54.093-54.093-54.093zM613.038 162.25c22.416-17.467 47.842-29.292 69.758-32.443 15.118-2.177 27.304 0.052 31.793 5.813 4.488 5.76 3.67 18.117-2.134 32.249-8.412 20.481-26.094 42.246-48.51 59.713-25.255 19.681-64.219 21.664-92.171 19.325 4.567-27.697 16.016-64.983 41.264-84.657z m-282.309 5.619c-5.804-14.132-6.622-26.489-2.134-32.249 4.487-5.76 16.669-7.99 31.792-5.813 21.917 3.151 47.342 14.976 69.758 32.443 25.257 19.681 36.704 56.983 41.267 84.652-27.973 2.343-66.926 0.354-92.175-19.32-22.416-17.467-40.096-39.231-48.508-59.713zM561.176 958.983h243.419c29.751 0 54.093-24.343 54.093-54.093V560.66H561.176v398.323zM160.394 904.89c0 29.751 24.341 54.093 54.093 54.093h252.025V560.66H160.394v344.23z"/>
+              </g>
+            </svg>
+          </div>
+          <p class="coupon-offer">Another 5% off when you bundle Returns and Tracking</p>
+          <div class="coupon-tear" aria-hidden="true"></div>
+          <div class="coupon-foot">
+            <div class="coupon-value">
+              <p class="coupon-code">BFCM25</p>
+              <p class="coupon-valid">Valid November 3–30</p>
+            </div>
+            <button class="coupon-save" type="button" data-copy data-copy-inline data-copy-code="BFCM25" aria-label="Copy code BFCM25"><span>Copy</span></button>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -398,7 +515,7 @@
   </dialog>
 
   <script src="main.js"></script>
-  <script src="returns.js?v=4"></script>
+  <script src="returns.js?v=5"></script>
   <script src="hero-returns.js?v=1"></script>
 </body>
 </html>

@@ -159,6 +159,40 @@
     data.plans.forEach(function (plan) {
       grid.appendChild(cardArticle(plan, product));
     });
+    syncPlanTabs();
+  }
+
+  var planName = "";
+
+  function syncPlanTabs() {
+    var grid = document.getElementById("plan-grid");
+    var bar = document.getElementById("plan-tabs");
+    if (!grid || !bar) return;
+    var cards = Array.prototype.slice.call(grid.querySelectorAll(".price-card"));
+    var names = cards.map(function (card) {
+      return card.querySelector("h3").textContent;
+    });
+    if (names.indexOf(planName) === -1) {
+      var highlighted = cards.filter(function (card) { return card.classList.contains("is-popular"); })[0];
+      planName = highlighted ? highlighted.querySelector("h3").textContent : names[0];
+    }
+    bar.replaceChildren();
+    names.forEach(function (name) {
+      var tab = document.createElement("button");
+      tab.type = "button";
+      tab.className = "plan-tab";
+      tab.setAttribute("role", "tab");
+      tab.setAttribute("aria-selected", name === planName ? "true" : "false");
+      tab.textContent = name;
+      tab.addEventListener("click", function () {
+        planName = name;
+        syncPlanTabs();
+      });
+      bar.appendChild(tab);
+    });
+    cards.forEach(function (card) {
+      card.classList.toggle("is-plan-on", card.querySelector("h3").textContent === planName);
+    });
   }
 
   function selectTab(selector, attr, value) {
