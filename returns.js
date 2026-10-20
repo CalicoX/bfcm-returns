@@ -7,10 +7,10 @@
       tabline: "Billed by monthly return volume, and you can change tier anytime. Yearly is about 18% off, then Black Friday takes more off by tier. Every yearly tier includes 20% extra quota.",
       yearlyBase: 0.82,
       plans: [
-        { name: "Free", price: 0, volume: "10 free returns a month", overage: null, feats: ["Green returns", "Cancel unfulfilled orders", "Basic workflows"], cta: "Start free" },
-        { name: "Basic", price: 5, volume: "20 returns a month", overage: "US $0.20 per extra return", feats: ["Green returns", "Cancel unfulfilled orders", "Basic workflows", "Email support"], monthlyOff: 0.85, yearlyOff: 0.8, cta: "Start free" },
-        { name: "Pro", price: 11, volume: "20 returns a month", overage: "US $0.50 per extra return", feats: ["Branded portal and self-serve returns", "Refunds, exchanges, and green returns", "Status tracking and an embed center", "24 core features"], monthlyOff: 0.8, yearlyOff: 0.75, cta: "Start free" },
-        { name: "Max", price: 29, volume: "20 returns a month", overage: "US $1.20 per extra return", feats: ["Everything in Pro", "Advanced workflows by amount, country, or delivery time", "Small make-goods to keep the sale", "Analytics"], monthlyOff: 0.75, yearlyOff: 0.7, tag: "Recommended", highlight: true, cta: "Start free" }
+        { name: "Free", price: 0, volume: "10 free returns a month", overage: null, featTitle: "What's in Free Plan", feats: ["3,500 carrier integrations", "Customize tracking page", "Tracking number redirection", "PayPal integration"], cta: "Start free" },
+        { name: "Basic", price: 5, volume: "20 returns a month", overage: "US $0.20 per extra return", featTitle: "What's in Basic", feats: ["3,500 carrier integrations", "Email notifications", "Basic analytics", "Customize tracking page", "Tracking number redirection", "PayPal integration"], monthlyOff: 0.85, yearlyOff: 0.8, cta: "Start free" },
+        { name: "Pro", price: 11, volume: "20 returns a month", overage: "US $0.50 per extra return", featTitle: "Everything in Basic, plus:", feats: ["Seller notifications", "Shipments export", "Product recommendations", "Remove 17TRACK branding", "Multilingual tracking pages", "Estimated Delivery Date (EDD)", "Multilingual email notification", "Apple Wallet Order Tracking", "Trustpilot Integration"], monthlyOff: 0.8, yearlyOff: 0.75, cta: "Start free" },
+        { name: "Max", price: 29, volume: "20 returns a month", overage: "US $1.20 per extra return", featTitle: "Everything in Pro, plus:", feats: ["Customize email triggers", "Transit time analysis", "On-time delivery analysis", "Exception orders analysis", "Predictive estimated delivery dates and analysis", "Split order email notifications (API required)"], monthlyOff: 0.75, yearlyOff: 0.7, tag: "Recommended", highlight: true, cta: "Start free" }
       ]
     },
     tracking: {
@@ -136,7 +136,7 @@
 
     var feats = el("div", "price-features");
     var featTitle = el("h4");
-    featTitle.textContent = "Includes";
+    featTitle.textContent = plan.featTitle || "Includes";
     var listEl = el("ul");
     plan.feats.forEach(function (item) {
       var li = el("li");
