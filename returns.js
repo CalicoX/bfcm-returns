@@ -218,4 +218,172 @@
   }
 
   renderPlans();
+
+  var bundleOpen = document.querySelector("[data-bundle-open]");
+  var bundleDialog = document.getElementById("bundle-dialog");
+  var bundleForm = document.getElementById("bundle-form");
+  var bundleSuccess = document.getElementById("bundle-success");
+  var bundleFormError = document.getElementById("bundle-form-error");
+  var personalEmail = ["gmail.com", "hotmail.com", "outlook.com", "yahoo.com", "yahoo.co.jp", "icloud.com"];
+  var countryByCode = { "+86": "cn", "+1": "us", "+44": "gb", "+852": "hk", "+65": "sg", "+81": "jp", "+82": "kr", "+61": "au", "+49": "de", "+33": "fr", "+91": "in", "+55": "br", "+971": "ae" };
+
+  function bundleField(name) {
+    return bundleForm.querySelector('[data-required="' + name + '"]');
+  }
+
+  function setBundleError(name, message) {
+    var field = bundleField(name);
+    var error = field.querySelector(".field-error");
+    var control = field.querySelector("input, select");
+    field.classList.toggle("is-invalid", !!message);
+    error.textContent = message || "";
+    if (control) control.setAttribute("aria-invalid", message ? "true" : "false");
+    return !message;
+  }
+
+  function validateBundle() {
+    var website = bundleForm.company_web_site.value.trim();
+    var name = bundleForm.name.value.trim();
+    var email = bundleForm.email.value.trim();
+    var phone = bundleForm.phone.value.trim();
+    var volume = bundleForm.monthly_order_range.value;
+    var domain = (email.split("@")[1] || "").toLowerCase();
+    var ok = true;
+
+    ok = setBundleError("website", !website || website.length < 10 || /[一-龥]/.test(website)
+      ? "Please enter a website URL with 10 to 250 characters" : "") && ok;
+    ok = setBundleError("name", name.length < 2
+      ? "Please enter your name with 2 to 250 characters" : "") && ok;
+    ok = setBundleError("email", !email || personalEmail.indexOf(domain) !== -1
+      ? "Please enter your business email address"
+      : !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)
+        ? "Please enter a valid email address" : "") && ok;
+    ok = setBundleError("phone", !phone
+      ? "Please enter your phone number"
+      : !/^\d{5,30}$/.test(phone) ? "Please enter a valid phone number" : "") && ok;
+    ok = setBundleError("volume", !volume
+      ? "Please select your current monthly parcel volume." : "") && ok;
+    return ok;
+  }
+
+  function resetBundle() {
+    bundleForm.hidden = false;
+    bundleSuccess.hidden = true;
+    bundleFormError.hidden = true;
+    bundleForm.reset();
+    bundleForm.querySelectorAll(".is-invalid").forEach(function (field) {
+      field.classList.remove("is-invalid");
+      field.querySelector(".field-error").textContent = "";
+    });
+  }
+
+  function loadCaptcha() {
+    if (window.TencentCaptcha) return Promise.resolve();
+    return new Promise(function (resolve, reject) {
+      var script = document.createElement("script");
+      script.src = "https://turing.captcha.qcloud.com/TCaptcha.js";
+      script.onload = function () { resolve(); };
+      script.onerror = function () { reject(new Error("captcha")); };
+      document.head.appendChild(script);
+    });
+  }
+
+  function submitBundle(ticket) {
+    var code = bundleForm.phone_area_code.value || "+86";
+    var country = countryByCode[code] || "us";
+    return fetch("https://cms-cn.17track.net/cms-api/website/cool/insert", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        company_name: bundleForm.company_name.value.trim(),
+        company_web_site: bundleForm.company_web_site.value.trim(),
+        name: bundleForm.name.value.trim(),
+        job_function: bundleForm.job_function.value,
+        email: bundleForm.email.value.trim(),
+        phone: bundleForm.phone.value.trim(),
+        monthly_order_range: bundleForm.monthly_order_range.value,
+        booking_app: bundleForm.booking_app.value,
+        cooperate_detail: "",
+        country: country,
+        from_source: 2,
+        source_type: country === "cn" ? 1 : 2,
+        phone_area_code: code,
+        ticket: ticket.ticket,
+        rand_str: ticket.randstr
+      })
+    }).then(function (response) {
+      if (!response.ok) throw new Error("submit");
+      return response.json();
+    });
+  }
+
+  function showBundleFailure() {
+    bundleFormError.hidden = false;
+    bundleFormError.textContent = "Something went wrong during form submission. Please try again later.";
+  }
+
+  if (bundleOpen && bundleDialog && bundleForm && typeof bundleDialog.showModal === "function") {
+    bundleOpen.addEventListener("click", function () {
+      resetBundle();
+      bundleDialog.showModal();
+    });
+    bundleDialog.querySelectorAll("[data-bundle-close]").forEach(function (button) {
+      button.addEventListener("click", function () { bundleDialog.close(); });
+    });
+    bundleDialog.addEventListener("click", function (event) {
+      if (event.target === bundleDialog) bundleDialog.close();
+    });
+    bundleForm.addEventListener("input", function (event) {
+      var field = event.target.closest("[data-required]");
+      if (field && field.classList.contains("is-invalid")) validateBundle();
+    });
+    bundleForm.addEventListener("change", function (event) {
+      var field = event.target.closest("[data-required]");
+      if (field && field.classList.contains("is-invalid")) validateBundle();
+    });
+    bundleForm.phone.addEventListener("keydown", function (event) {
+      if (event.key.length === 1 && !/\d/.test(event.key) && !event.metaKey && !event.ctrlKey) event.preventDefault();
+    });
+    bundleForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      bundleFormError.hidden = true;
+      if (!validateBundle()) {
+        var first = bundleForm.querySelector(".is-invalid input, .is-invalid select");
+        if (first) first.focus();
+        return;
+      }
+      var submit = bundleForm.querySelector(".bundle-submit");
+      submit.disabled = true;
+      submit.textContent = "Submitting…";
+      function finish(ok) {
+        submit.disabled = false;
+        submit.textContent = "Submit";
+        if (!ok) showBundleFailure();
+      }
+      function send(ticket) {
+        submitBundle(ticket).then(function (body) {
+          var code = body && body.data ? body.data.code : body && body.code;
+          if (code === 200) {
+            bundleForm.hidden = true;
+            bundleSuccess.hidden = false;
+            finish(true);
+          } else {
+            finish(false);
+          }
+        }).catch(function () { finish(false); });
+      }
+      loadCaptcha().then(function () {
+        new window.TencentCaptcha("195851482", function (result) {
+          if (result && result.ret === 0) send(result);
+          else finish(true);
+        }, { userLanguage: "en" }).show();
+      }).catch(function () {
+        send({
+          ret: 0,
+          randstr: "@" + Math.random().toString(36).slice(2),
+          ticket: "trerror_1001_195851482" + Math.floor(Date.now() / 1000)
+        });
+      });
+    });
+  }
 })();

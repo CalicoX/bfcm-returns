@@ -616,8 +616,6 @@ h1 {
 
 .section { padding: var(--sec) 0; }
 .section-tight { padding-top: 0; }
-#report { padding-bottom: clamp(32px, 4vw, 68px); }
-
 .section-head { max-width: 760px; margin-inline: auto; text-align: center; }
 
 #bundle[hidden] { display: none; }

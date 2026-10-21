@@ -7,7 +7,7 @@
   <meta name="description" content="17RETURNS Black Friday offer, November 3–30. New customers save up to 30% on yearly plans, plus 20% extra quota. Bundle Returns and Tracking for another 5% off.">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="styles.css?v=2">
-  <link rel="stylesheet" href="returns.css?v=35">
+  <link rel="stylesheet" href="returns.css?v=42">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23003a9b'/%3E%3C/svg%3E">
 </head>
 <body>
@@ -261,39 +261,6 @@
       </div>
     </section>
 
-    <section class="section" id="report" aria-labelledby="report-title">
-      <div class="canvas">
-        <header class="section-head">
-          <h2 id="report-title">2026 <span class="bf-mark">Black Friday<img class="bf-sparkle" src="assets/sparkle.svg" alt="" width="38" height="38"></span><br>returns readiness report</h2>
-          <p class="lead">From data, sales, customer success, and marketing. One report for the homepage, this page, email, the blog, and social.</p>
-        </header>
-        <ul class="figures">
-          <li>
-            <p class="figure">2–3×</p>
-            <h3>December return requests peak</h3>
-            <p>Illustrative. Multiple of a normal day’s volume.</p>
-          </li>
-          <li>
-            <p class="figure">30%+</p>
-            <h3>Refunds that can stay as revenue</h3>
-            <p>Illustrative. Share kept through exchanges and store credit.</p>
-          </li>
-          <li>
-            <p class="figure">48h → min</p>
-            <h3>Review time, automated</h3>
-            <p>Illustrative. Rules versus manual review.</p>
-          </li>
-        </ul>
-        <div class="cta-row">
-          <a class="btn-switch" href="#report-note">
-            <span class="btn-switch-knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.4" fill="currentColor" opacity="0.35"/><circle cx="8.2" cy="12" r="1.5" fill="currentColor" opacity="0.55"/><circle cx="11.5" cy="12" r="1.6" fill="currentColor" opacity="0.8"/><path d="M13 7.5L18.5 12 13 16.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="btn-switch-label">Download the full report</span>
-          </a>
-        </div>
-        <p class="note" id="report-note" tabindex="-1">The PDF publishes with the campaign. The three figures on this page are illustrative. The data team’s report is the final source.</p>
-      </div>
-    </section>
-
     <section class="section" id="plans" aria-labelledby="plans-title">
       <div class="canvas">
         <header class="section-head">
@@ -323,10 +290,10 @@
             <p class="bill-bf bundle-flag">Only if neither product has an active paid subscription</p>
             <p class="note">Customer service sets the price. Individual cases, including current customers, can go lower within approval. Nothing renews automatically.</p>
           </div>
-          <a class="btn-switch" href="https://www.17track.com/en/contact-us" target="_blank" rel="noopener">
+          <button class="btn-switch" type="button" data-bundle-open>
             <span class="btn-switch-knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.4" fill="currentColor" opacity="0.35"/><circle cx="8.2" cy="12" r="1.5" fill="currentColor" opacity="0.55"/><circle cx="11.5" cy="12" r="1.6" fill="currentColor" opacity="0.8"/><path d="M13 7.5L18.5 12 13 16.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <span class="btn-switch-label">Talk to us about the bundle</span>
-          </a>
+          </button>
         </section>
       </div>
     </section>
@@ -342,7 +309,6 @@
             <span class="btn-switch-knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.4" fill="currentColor" opacity="0.35"/><circle cx="8.2" cy="12" r="1.5" fill="currentColor" opacity="0.55"/><circle cx="11.5" cy="12" r="1.6" fill="currentColor" opacity="0.8"/><path d="M13 7.5L18.5 12 13 16.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <span class="btn-switch-label">Claim the Black Friday price</span>
           </a>
-          <a class="btn btn-ghost" href="#report">Download the report</a>
         </div>
         <div class="coupon">
           <div class="coupon-art" aria-hidden="true">
@@ -456,6 +422,115 @@
     </div>
   </footer>
 
+  <dialog class="bundle-dialog" id="bundle-dialog" aria-label="Talk to us about the bundle">
+    <div class="bundle-dialog-frame">
+      <div class="bundle-dialog-main">
+        <button class="bundle-dialog-close" type="button" data-bundle-close aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <form class="bundle-form" id="bundle-form" novalidate>
+          <div class="bundle-field">
+            <label for="bundle-company">Company Name</label>
+            <input id="bundle-company" name="company_name" type="text" maxlength="250" autocomplete="organization">
+          </div>
+          <div class="bundle-field" data-required="website">
+            <label for="bundle-website">Company Website <span class="req" aria-hidden="true">*</span></label>
+            <input id="bundle-website" name="company_web_site" type="text" maxlength="250" autocomplete="url" inputmode="url">
+            <p class="field-error" id="bundle-website-error"></p>
+          </div>
+          <div class="bundle-row">
+            <div class="bundle-field" data-required="name">
+              <label for="bundle-name">Name <span class="req" aria-hidden="true">*</span></label>
+              <input id="bundle-name" name="name" type="text" maxlength="250" autocomplete="name">
+              <p class="field-error" id="bundle-name-error"></p>
+            </div>
+            <div class="bundle-field">
+              <label for="bundle-job">Job Function</label>
+              <select id="bundle-job" name="job_function">
+                <option value=""></option>
+                <option value="1">C-Suite / Executive Leadership</option>
+                <option value="2">Business Development &amp; Partnerships</option>
+                <option value="3">Marketing, Digital, &amp; Growth</option>
+                <option value="4">Product Management &amp; User Experience (UX)</option>
+                <option value="5">Customer Experience &amp; Success</option>
+                <option value="6">Sales &amp; Account Management</option>
+                <option value="7">E-commerce &amp; Retail Operations</option>
+                <option value="8">Operations, Logistics, &amp; Supply Chain</option>
+                <option value="9">IT, Security, &amp; Engineering</option>
+                <option value="10">Project &amp; Program Management</option>
+                <option value="11">Finance &amp; Procurement</option>
+                <option value="12">HR &amp; Talent Management</option>
+                <option value="13">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="bundle-row">
+            <div class="bundle-field" data-required="email">
+              <label for="bundle-email">Business Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="bundle-email" name="email" type="email" maxlength="250" autocomplete="email">
+              <p class="field-error" id="bundle-email-error"></p>
+            </div>
+            <div class="bundle-field" data-required="phone">
+              <label for="bundle-phone">Phone Number <span class="req" aria-hidden="true">*</span></label>
+              <div class="phone-wrap">
+                <select id="bundle-code" name="phone_area_code" aria-label="Country code">
+                  <option value="+86" selected>+86</option>
+                  <option value="+1">+1</option>
+                  <option value="+44">+44</option>
+                  <option value="+852">+852</option>
+                  <option value="+65">+65</option>
+                  <option value="+81">+81</option>
+                  <option value="+82">+82</option>
+                  <option value="+61">+61</option>
+                  <option value="+49">+49</option>
+                  <option value="+33">+33</option>
+                  <option value="+91">+91</option>
+                  <option value="+55">+55</option>
+                  <option value="+971">+971</option>
+                </select>
+                <input id="bundle-phone" name="phone" type="tel" maxlength="30" inputmode="numeric" autocomplete="tel-national">
+              </div>
+              <p class="field-error" id="bundle-phone-error"></p>
+            </div>
+          </div>
+          <div class="bundle-field" data-required="volume">
+            <label for="bundle-volume">Monthly parcel volume <span class="req" aria-hidden="true">*</span></label>
+            <select id="bundle-volume" name="monthly_order_range">
+              <option value=""></option>
+              <option value="RANGE_LE_0_5K">≤ 0.5k</option>
+              <option value="RANGE_0_5K_2K">0.5k ~ 2k</option>
+              <option value="RANGE_2K_5K">2k ~ 5k</option>
+              <option value="RANGE_5K_15K">5k ~ 15k</option>
+              <option value="RANGE_15K_50K">15k ~ 50k</option>
+              <option value="RANGE_50K_100K">50k ~ 100k</option>
+              <option value="RANGE_100K_1M">100k ~ 1M</option>
+              <option value="RANGE_GE_1M">≥ 1M</option>
+            </select>
+            <p class="field-error" id="bundle-volume-error"></p>
+          </div>
+          <div class="bundle-field">
+            <label for="bundle-interest">Products of interest</label>
+            <select id="bundle-interest" name="booking_app">
+              <option value=""></option>
+              <option value="SHOPIFY">17TRACK Order Tracking</option>
+              <option value="API">17TRACK API</option>
+              <option value="RETURNS_SAAS">17RETURNS</option>
+            </select>
+          </div>
+          <div class="bundle-submit-block">
+            <p class="bundle-policy">Submission of this form constitutes agreement to <a href="https://www.17track.net/en/about/privacy" target="_blank" rel="noopener">17TRACK’s Privacy Policy.</a></p>
+            <button class="bundle-submit" type="submit">Submit</button>
+            <p class="bundle-form-error" id="bundle-form-error" hidden></p>
+          </div>
+        </form>
+        <div class="bundle-success" id="bundle-success" hidden>
+          <h2>Submission Successful</h2>
+          <p>Thank you for your submission. We have received your information and will contact you as soon as possible. Should you have any questions or require further assistance, please do not hesitate to reach out to us.</p>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
   <dialog class="join-dialog" id="join-dialog" aria-labelledby="join-title">
     <h2 id="join-title">Join with us</h2>
     <p>Partnership applications are submitted on 17TRACK.</p>
@@ -464,7 +539,7 @@
   </dialog>
 
   <script src="main.js"></script>
-  <script src="returns.js?v=6"></script>
+  <script src="returns.js?v=7"></script>
   <script src="hero-returns.js?v=1"></script>
 </body>
 </html>

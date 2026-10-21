@@ -399,7 +399,6 @@
   }
 
   playStatRoll(document.querySelector("#numbers .stats"));
-  playStatRoll(document.querySelector("#report .figures"), ".figure");
 
   var countdown = document.querySelector("[data-countdown]");
   var grid = document.querySelector("[data-countdown-grid]");

@@ -58,7 +58,6 @@
 }
 
 #bfcm,
-#report,
 #plans,
 #bundle,
 #ready {
@@ -67,9 +66,6 @@
 
 .hero h1 { max-width: 12em; }
 
-#report { padding-bottom: var(--sec); }
-
-#report .note,
 #product-tagline {
   margin-inline: auto;
   text-align: center;
@@ -941,6 +937,7 @@ button.code-chip:hover { background: var(--bg-subtle); }
   color: #f0fdfa;
   font-size: 14px;
   font-weight: 600;
+  font-family: inherit;
   line-height: 1;
   letter-spacing: -0.01em;
   text-decoration: none;
@@ -1234,4 +1231,208 @@ button.code-chip:hover { background: var(--bg-subtle); }
     margin-top: 16px;
   }
   .bundle-offer { margin-top: 28px; }
+}
+
+.bundle-dialog {
+  width: min(520px, calc(100vw - 32px));
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 22px;
+  background: #fff;
+  color: #111827;
+  overflow: hidden;
+}
+
+.bundle-dialog::backdrop {
+  background: rgba(6, 10, 24, 0.72);
+}
+
+.bundle-dialog-frame {
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  background: #fff;
+}
+
+.bundle-dialog-main {
+  position: relative;
+}
+
+.bundle-dialog-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.bundle-dialog-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.bundle-dialog-close:hover { color: #111827; background: #f3f4f6; }
+
+.bundle-form,
+.bundle-success {
+  padding: 28px 24px 24px;
+  background: #fff;
+}
+
+.bundle-field { margin-bottom: 22px; }
+
+.bundle-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.req { color: #dc2626; }
+
+.bundle-field input,
+.bundle-field select {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  color: #111827;
+  font: inherit;
+  font-size: 14px;
+}
+
+.bundle-field select {
+  appearance: none;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+.bundle-field input:focus,
+.bundle-field select:focus {
+  outline: none;
+}
+
+.bundle-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.phone-wrap { position: relative; }
+
+.phone-wrap select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 68px;
+  padding-right: 18px;
+  border: 0;
+  background-color: transparent;
+  background-position: right 4px center;
+  color: #6b7280;
+  text-align: center;
+}
+
+.phone-wrap input { padding-left: 72px; }
+
+.bundle-field.is-invalid input,
+.bundle-field.is-invalid select,
+.bundle-field.is-invalid .phone-wrap input {
+  border-color: #dc2626;
+}
+
+.bundle-field.is-invalid .phone-wrap select { border: 0; }
+
+.field-error {
+  display: none;
+  margin: 6px 0 0;
+  color: #dc2626;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.bundle-field.is-invalid .field-error { display: block; }
+
+.bundle-policy {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.bundle-policy a { color: inherit; }
+
+.bundle-submit {
+  width: 100%;
+  height: 44px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #0d9488;
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.bundle-submit:hover { background: #0f766e; }
+
+.bundle-submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.bundle-form-error {
+  margin: 10px 0 0;
+  color: #dc2626;
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.bundle-success {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 420px;
+  text-align: center;
+}
+
+.bundle-success[hidden],
+.bundle-form[hidden] { display: none; }
+
+.bundle-success h2 {
+  font-size: 24px;
+  font-weight: 650;
+}
+
+.bundle-success p {
+  margin: 16px auto 0;
+  max-width: 36em;
+  color: #111827;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .bundle-form { padding: 36px 16px 20px; }
+  .bundle-row { grid-template-columns: 1fr; }
 }
