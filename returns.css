@@ -1122,6 +1122,17 @@ button.code-chip:hover { background: var(--bg-subtle); }
   min-width: 0;
 }
 
+.bfcm-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.bfcm-card-head .nav-menu-title { flex: 0 1 auto; }
+
+.bfcm-card-head .bfcm-bf { flex: 0 0 auto; }
+
 .price-features li::before,
 .price-custom-features li::before {
   background: #0d9488 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.2 6.4 11l6-6.2' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px no-repeat;
@@ -1436,4 +1447,10 @@ button.code-chip:hover { background: var(--bg-subtle); }
 @media (max-width: 860px) {
   .bundle-form { padding: 36px 16px 20px; }
   .bundle-row { grid-template-columns: 1fr; }
+}
+
+.nav-left > .bfcm-slot { margin-left: -28px; }
+
+@media (max-width: 1200px) {
+  .nav-left > .bfcm-slot { margin-left: 0; }
 }
