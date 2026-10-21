@@ -629,6 +629,26 @@
   text-align: left;
 }
 
+.bundle-marks {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.bundle-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.bundle-times {
+  color: #111;
+  font-size: 18px;
+  line-height: 1;
+}
+
 .bundle-copy {
   display: grid;
   justify-items: start;
@@ -1061,29 +1081,47 @@ button.code-chip:hover { background: var(--bg-subtle); }
 }
 
 .bfcm-menu {
-  width: 420px;
-  right: 0;
-  left: auto;
+  width: 480px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  top: calc(100% + 12px);
+  padding: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12), 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .bfcm-card {
   display: grid !important;
-  grid-template-columns: minmax(0, 1fr) 96px;
-  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) 128px;
+  gap: 16px;
   align-items: center;
+}
+
+.bfcm-bf {
+  width: fit-content;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: linear-gradient(105deg, #fff4c8 0%, #f6d56b 46%, #e2b34a 100%);
+  color: #3a2a08;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.bfcm-card img {
+  width: 128px;
+  height: 86px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .bfcm-card-copy {
   display: grid;
   gap: 4px;
   min-width: 0;
-}
-
-.bfcm-card img {
-  width: 96px;
-  height: 64px;
-  object-fit: cover;
-  border-radius: 8px;
 }
 
 .price-features li::before,
@@ -1140,6 +1178,25 @@ button.code-chip:hover { background: var(--bg-subtle); }
   background: #0d9488 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.2 6.4 11l6-6.2' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px no-repeat;
 }
 .compare .note { margin: 16px auto 0; text-align: center; }
+
+@media (max-width: 800px) {
+  .figures {
+    justify-items: center;
+    text-align: center;
+  }
+  .figures li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .figures .figure {
+    width: max-content;
+    margin-inline: auto;
+    text-align: center;
+  }
+  .figures p:last-child { margin-inline: auto; }
+}
 
 .plan-tabs { display: none; }
 
