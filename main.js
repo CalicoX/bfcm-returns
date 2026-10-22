@@ -255,22 +255,26 @@
     var label = button.textContent;
     var inline = button.hasAttribute("data-copy-inline");
     var codeLine = button.closest(".code-line");
+    if (!codeLine && button.querySelector(".code")) codeLine = button;
     var codeEl = codeLine ? codeLine.querySelector(".code") : null;
     var chipLabel = inline && !codeEl ? button.querySelector("span") : null;
     var chipText = chipLabel ? chipLabel.textContent : "";
     var restoreTimer = 0;
     button.addEventListener("click", function () {
       var code = button.getAttribute("data-copy-code") || chipText || "BFCM25";
+      var doneLabel = button.getAttribute("data-copy-done") || "Copied";
       var status = document.getElementById(button.getAttribute("data-copy-status") || "copy-status");
       if (codeEl) {
-        codeEl.textContent = "Copied";
+        codeEl.textContent = doneLabel;
+        if (button.classList.contains("bf-code")) button.classList.add("is-copied");
         if (status) status.textContent = "";
         window.clearTimeout(restoreTimer);
         restoreTimer = window.setTimeout(function () {
           codeEl.textContent = code;
+          button.classList.remove("is-copied");
         }, 2000);
       } else if (chipLabel) {
-        chipLabel.textContent = "Copied";
+        chipLabel.textContent = doneLabel;
         window.clearTimeout(restoreTimer);
         restoreTimer = window.setTimeout(function () {
           chipLabel.textContent = chipText || code;
@@ -281,6 +285,7 @@
           if (!ok) {
             window.clearTimeout(restoreTimer);
             codeEl.textContent = code;
+            button.classList.remove("is-copied");
             if (status) status.textContent = "Select the code and copy it manually.";
           }
           return;
