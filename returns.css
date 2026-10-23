@@ -1651,9 +1651,10 @@ button.code-chip:hover { background: var(--bg-subtle); }
 .bf-count { margin: 0; }
 
 .bf-count-grid {
+  --bf-count-size: 68px;
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0;
   margin: 0;
 }
 
@@ -1671,8 +1672,8 @@ button.code-chip:hover { background: var(--bg-subtle); }
 .bf-count-num {
   display: grid;
   place-items: center;
-  width: 68px;
-  height: 68px;
+  width: var(--bf-count-size);
+  height: var(--bf-count-size);
   border-radius: 12px;
   background: #2b2b2b;
   color: #fff;
@@ -1681,6 +1682,19 @@ button.code-chip:hover { background: var(--bg-subtle); }
   line-height: 1;
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
+}
+
+.bf-count-sep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 20px;
+  height: var(--bf-count-size);
+  color: #2b2b2b;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .bf-count-unit {
@@ -1804,14 +1818,17 @@ button.code-chip:hover { background: var(--bg-subtle); }
 @media (max-width: 480px) {
   .bf-offer { padding: 40px 0; }
 
-  .bf-count-grid { gap: 6px; }
+  .bf-count-grid {
+    --bf-count-size: 56px;
+  }
 
   .bf-count-grid p { min-width: 0; }
 
-  .bf-count-num {
-    width: 56px;
-    height: 56px;
-    font-size: 20px;
+  .bf-count-num { font-size: 20px; }
+
+  .bf-count-sep {
+    width: 16px;
+    font-size: 18px;
   }
 }
 
