@@ -47,12 +47,32 @@
     });
   }
 
+  function placeBfcmMenu() {
+    var menu = document.getElementById("menu-bfcm");
+    if (!menu || menu.hidden) return;
+    menu.style.marginLeft = "";
+    var rect = menu.getBoundingClientRect();
+    var pad = 12;
+    var shift = 0;
+    if (rect.left < pad) shift = pad - rect.left;
+    var right = rect.right + shift;
+    var limit = window.innerWidth - pad;
+    if (right > limit) shift -= right - limit;
+    if (rect.left + shift < pad) shift = pad - rect.left;
+    menu.style.marginLeft = shift ? shift + "px" : "";
+  }
+
   function openMenu(button) {
     closeMenus(button);
     button.setAttribute("aria-expanded", "true");
     var panel = document.getElementById(button.getAttribute("aria-controls"));
-    if (panel) panel.hidden = false;
+    if (panel) {
+      panel.hidden = false;
+      if (panel.id === "menu-bfcm") placeBfcmMenu();
+    }
   }
+
+  window.addEventListener("resize", placeBfcmMenu);
 
   menuButtons.forEach(function (button) {
     var item = button.parentElement;
@@ -405,33 +425,34 @@
 
   playStatRoll(document.querySelector("#numbers .stats"));
 
-  var countdown = document.querySelector("[data-countdown]");
-  var grid = document.querySelector("[data-countdown-grid]");
-  if (countdown && grid) {
+  function padCountdown(n) { return String(n).padStart(2, "0"); }
+
+  document.querySelectorAll("[data-countdown]").forEach(function (countdown) {
     var end = Date.parse(countdown.getAttribute("data-countdown"));
     var days = countdown.querySelector("[data-days]");
     var hours = countdown.querySelector("[data-hours]");
     var minutes = countdown.querySelector("[data-minutes]");
     var seconds = countdown.querySelector("[data-seconds]");
+    if (!days || !hours || !minutes || !seconds) return;
+    var grid = countdown.querySelector("[data-countdown-grid]");
     var caption = countdown.querySelector(".countdown-caption");
 
-    function pad(n) { return String(n).padStart(2, "0"); }
-
     function paint(el, value) {
-      var text = pad(value);
+      var text = padCountdown(value);
       el.textContent = text;
       var cell = el.parentElement;
-      if (cell) cell.setAttribute("aria-label", text + " " + cell.getAttribute("data-unit"));
+      var unit = cell && cell.getAttribute("data-unit");
+      if (unit) cell.setAttribute("aria-label", text + " " + unit);
     }
 
     function tick() {
       var left = end - Date.now();
       if (left <= 0) {
-        grid.hidden = true;
+        if (grid) grid.hidden = true;
         if (caption) caption.textContent = "This offer ended on November 30, 2026.";
         return;
       }
-      grid.hidden = false;
+      if (grid) grid.hidden = false;
       var total = Math.floor(left / 1000);
       paint(days, Math.floor(total / 86400));
       paint(hours, Math.floor((total % 86400) / 3600));
@@ -441,7 +462,7 @@
 
     tick();
     window.setInterval(tick, 1000);
-  }
+  });
 
   function mountOfficialPricing() {
     var stage = document.getElementById("plans-stage");
