@@ -107,11 +107,6 @@
       sale.appendChild(badge);
       amount.appendChild(sale);
       offer.appendChild(amount);
-      if (key === "returns" && billing === "yearly") {
-        var gift = el("span", "price-save");
-        gift.textContent = "20% extra quota";
-        offer.appendChild(gift);
-      }
       var save = el("p", "price-quota-line");
       save.textContent = "Save " + money(list - salePrice) + (billing === "monthly" ? " a month" : " a year");
       offer.appendChild(save);
